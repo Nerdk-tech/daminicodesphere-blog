@@ -1,5 +1,18 @@
 [
   {
+    "slug": "dani-waitlist",
+    "title": "Why You Should Join the DANI Waitlist",
+    "date": "2026-10-14",
+    "excerpt": "Early access before launch, founding-member pricing, and a say in how the platform is built. Here's what a free spot on the DANI waitlist actually gets you.",
+    "cover": "assets/covers/dani-waitlist.jpg",
+    "tags": [
+      "DANI AI",
+      "Waitlist",
+      "AI"
+    ],
+    "file": "posts/dani-waitlist.md"
+  },
+  {
     "slug": "dani-ai-photorealism",
     "title": "DANI AI and the Photorealism Leap: Why Realistic Image Generation Changes Everything",
     "date": "2026-10-14",
