@@ -10,7 +10,7 @@ The official blog of [Daminicodesphere](https://daminicodesphere.org) — AI, co
 
 ## Writing a post (admin flow)
 
-1. Open `https://<your-blog-domain>/admin.html`
+1. Open `https://<your-blog-domain>/admin`
 2. Enter the panel password (set in `js/admin.js`, `ADMIN_PASSWORD` — change it!)
 3. First time only: paste a GitHub personal access token with **repo** scope. It's stored in your browser's localStorage only.
 4. Click **+ New post** → title, cover URL (optional), tags, excerpt, content in markdown → **Publish**.

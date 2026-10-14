@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/admin.html", "destination": "/admin", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/post/:slug", "destination": "/post.html?slug=:slug" }
+  ]
+}
