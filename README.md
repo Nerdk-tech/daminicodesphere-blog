@@ -27,7 +27,7 @@ Headings (`#`–`####`), bold, italic, inline code, fenced code blocks, lists, q
 
 ## Contact
 
-- WhatsApp: +234 805 467 1458
+- Support: support@daminicodesphere.org
 - Email: damibotzinc@gmail.com
 
 © 2026 Daminicodesphere

@@ -71,10 +71,10 @@
           (post.cover ? '<figure class="article-cover"><img src="' + esc(post.cover) + '" alt="' + esc(post.title) + '"></figure>' : "") +
           '<div class="article-body">' + renderMarkdown(md) + "</div>" +
           '<div class="article-cta">' +
-            "<p>Building something with AI? Let's talk.</p>" +
-            '<a class="btn-solid" target="_blank" rel="noopener" href="https://wa.me/' + DCS.contact.whatsapp + '?text=' +
-              encodeURIComponent("Hi! I read the DANI AI photorealism post on the Daminicodesphere blog. Let's talk.") +
-              '">Chat on WhatsApp →</a>' +
+            "<p>Questions or feedback? Reach the team.</p>" +
+            '<a class="btn-solid" href="mailto:' + DCS.contact.email + '?subject=' +
+              encodeURIComponent("Daminicodesphere blog feedback") +
+              '">support@daminicodesphere.org</a>' +
           "</div>";
       })
       .catch(() => {

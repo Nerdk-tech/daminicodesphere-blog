@@ -46,4 +46,4 @@ We use it for our own projects constantly: hero images, illustrations for this v
 
 Photorealistic image generation isn't a gimmick, it's a production revolution. The camera used to be the gatekeeper of "real." Now the gatekeeper is your imagination.
 
-Try it yourself, and if you're building something that needs visuals that actually sell, [let's talk](https://wa.me/2348054671458).
+Try it yourself, and if you're building something that needs visuals that actually sell, reach the team at [support@daminicodesphere.org](mailto:support@daminicodesphere.org).

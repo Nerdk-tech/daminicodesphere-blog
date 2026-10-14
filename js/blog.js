@@ -41,8 +41,10 @@ function renderMarkdown(md) {
       .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-      .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,
-        '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      .replace(/\[([^\]]+)\]\(((?:https?:|mailto:)[^)\s]+)\)/g, (m, t, u) => {
+        const ext = u.startsWith("http");
+        return '<a href="' + u + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + t + "</a>";
+      });
 
   const closeList = () => {
     if (listType) { html += `</${listType}>`; listType = null; }

@@ -8,7 +8,6 @@ const DCS = {
     branch: "main"
   },
   contact: {
-    whatsapp: "2348054671458",
-    email: "damibotzinc@gmail.com"
+    email: "support@daminicodesphere.org"
   }
 };
