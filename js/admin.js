@@ -1,5 +1,5 @@
 /* ============================
-   DCS BLOG — ADMIN PANEL
+   DCS BLOG, ADMIN PANEL
    Publishes posts to GitHub via
    the Contents API (repo = the
    blog itself; hosting platform
@@ -7,7 +7,7 @@
    ============================ */
 
 /* CHANGE THIS PASSWORD to whatever you want.
-   It's a light gate for the panel UI — the real
+   It's a light gate for the panel UI, the real
    key is your GitHub token, which never leaves
    your browser. */
 const ADMIN_PASSWORD = "codesphere-admin";
@@ -123,7 +123,7 @@ $("tokenSave").addEventListener("click", async () => {
     toast("GitHub connected");
     setTimeout(showManager, 700);
   } catch (e) {
-    $("tokenStatus").textContent = "Invalid token — try again";
+    $("tokenStatus").textContent = "Invalid token, try again";
     toast("Token failed", true);
   }
 });
@@ -148,7 +148,7 @@ async function showManager() {
   posts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
   if (!posts.length) {
-    list.innerHTML = '<p class="loading-inline">No posts yet — hit “+ New post”.</p>';
+    list.innerHTML = '<p class="loading-inline">No posts yet, hit “+ New post”.</p>';
     return;
   }
 
@@ -211,7 +211,7 @@ async function openEditor(post) {
 }
 
 function updatePreview() {
-  $("previewPane").innerHTML = renderMarkdown($("edContent").value || "_Nothing yet — start typing…_");
+  $("previewPane").innerHTML = renderMarkdown($("edContent").value || "_Nothing yet, start typing…_");
 }
 ["edContent", "edTitle", "edExcerpt", "edTags", "edCover"].forEach(id =>
   $(id).addEventListener("input", updatePreview)

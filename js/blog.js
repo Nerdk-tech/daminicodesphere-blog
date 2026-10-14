@@ -1,5 +1,5 @@
 /* ============================
-   DCS BLOG — shared helpers
+   DCS BLOG, shared helpers
    (markdown renderer + utils)
    ============================ */
 

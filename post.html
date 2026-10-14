@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post — Daminicodesphere Blog</title>
+  <title>Post · Daminicodesphere Blog</title>
   <meta name="theme-color" content="#0C0F15" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C0F15'/%3E%3Ctext x='32' y='42' font-size='30' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%237EE7BB'%3ED%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,6 @@
   <footer class="site-foot">
     <div class="wrap">
       <p class="foot-brand">Daminicodesphere</p>
-      <p class="foot-note">Built and written by Damini · AI Engineer &amp; Full-Stack Developer</p>
       <p class="foot-copy">© <span id="year">2026</span> Daminicodesphere</p>
     </div>
   </footer>
@@ -60,7 +59,7 @@
         const md = await fetch(post.file, { cache: "no-store" })
           .then(r => { if (!r.ok) throw new Error(); return r.text(); });
 
-        document.title = post.title + " — Daminicodesphere Blog";
+        document.title = post.title + " · Daminicodesphere Blog";
 
         document.getElementById("article").innerHTML =
           '<p class="post-meta tags-row">' +
@@ -74,7 +73,7 @@
           '<div class="article-cta">' +
             "<p>Building something with AI? Let's talk.</p>" +
             '<a class="btn-solid" target="_blank" rel="noopener" href="https://wa.me/' + DCS.contact.whatsapp + '?text=' +
-              encodeURIComponent("Hi Damini! I read your blog post about DANI AI photorealism. Let's talk.") +
+              encodeURIComponent("Hi! I read the DANI AI photorealism post on the Daminicodesphere blog. Let's talk.") +
               '">Chat on WhatsApp →</a>' +
           "</div>";
       })
