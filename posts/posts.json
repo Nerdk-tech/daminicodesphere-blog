@@ -1,11 +1,25 @@
 [
   {
+    "slug": "admin-flow-test",
+    "title": "Admin Flow Test",
+    "date": "2026-10-14",
+    "excerpt": "",
+    "cover": "",
+    "tags": [],
+    "file": "posts/admin-flow-test.md"
+  },
+  {
     "slug": "dani-ai-photorealism",
     "title": "DANI AI and the Photorealism Leap: Why Realistic Image Generation Changes Everything",
     "date": "2026-10-14",
     "excerpt": "Photorealistic AI generation removes the camera, the studio and the budget from the equation. Here's why images that look real change how you build, market and sell.",
     "cover": "assets/covers/dani-photorealism.jpg",
-    "tags": ["AI", "DANI AI", "Image Generation", "Photorealism"],
+    "tags": [
+      "AI",
+      "DANI AI",
+      "Image Generation",
+      "Photorealism"
+    ],
     "file": "posts/dani-ai-photorealism.md"
   }
 ]
