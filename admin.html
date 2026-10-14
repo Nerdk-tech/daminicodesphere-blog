@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Daminicodesphere Blog</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0C0F15" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C0F15'/%3E%3Ctext x='32' y='42' font-size='30' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%237EE7BB'%3ED%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span>Daminicodesphere<em>admin</em></span>
+      </a>
+      <nav class="head-nav">
+        <a href="./">Blog</a>
+        <button class="btn-ghost btn-sm" id="logoutBtn" hidden>Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== LOGIN GATE ===== -->
+    <section id="gate" class="gate">
+      <div class="gate-card">
+        <h1>Admin access</h1>
+        <p>Enter the panel password to manage posts.</p>
+        <form id="gateForm">
+          <input type="password" id="gatePass" placeholder="Password" autocomplete="current-password" />
+          <button class="btn-solid" type="submit">Enter panel →</button>
+        </form>
+        <p class="gate-hint">Password lives in <code>js/admin.js</code> — change it there any time.</p>
+      </div>
+    </section>
+
+    <!-- ===== PANEL ===== -->
+    <section id="panel" hidden>
+
+      <!-- token setup -->
+      <div id="tokenSetup" class="token-setup" hidden>
+        <div class="token-card">
+          <h2>Connect GitHub</h2>
+          <p>The panel publishes posts straight to the blog repo via the GitHub API. Paste a personal access token with <strong>repo</strong> scope (github.com → Settings → Developer settings → Tokens).</p>
+          <p class="token-note">The token is stored only in <em>your</em> browser (localStorage) and sent only to github.com. Revoke it any time on GitHub.</p>
+          <input type="password" id="tokenInput" placeholder="ghp_… or github_pat_…" />
+          <div class="token-actions">
+            <button class="btn-solid" id="tokenSave">Save &amp; test</button>
+            <span id="tokenStatus" class="token-status"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- post manager -->
+      <div id="manager" hidden>
+        <div class="manager-head">
+          <h1>Posts</h1>
+          <button class="btn-solid" id="newPostBtn">+ New post</button>
+        </div>
+        <div id="postList" class="post-list"><p class="loading-inline">Loading…</p></div>
+      </div>
+
+      <!-- editor -->
+      <div id="editor" hidden>
+        <div class="editor-head">
+          <button class="btn-ghost btn-sm" id="backBtn">← Back to posts</button>
+          <div class="editor-actions">
+            <button class="btn-ghost" id="previewBtn">Preview</button>
+            <button class="btn-solid" id="publishBtn">Publish</button>
+          </div>
+        </div>
+
+        <div class="editor-grid">
+          <div class="editor-fields">
+            <label>Title
+              <input id="edTitle" type="text" placeholder="My post title" />
+            </label>
+            <div class="field-row">
+              <label>Cover image URL <em>(optional)</em>
+                <input id="edCover" type="text" placeholder="https://…/cover.jpg" />
+              </label>
+              <label>Tags <em>(comma separated)</em>
+                <input id="edTags" type="text" placeholder="AI, image generation" />
+              </label>
+            </div>
+            <label>Excerpt <em>(short summary for the blog cards)</em>
+              <textarea id="edExcerpt" rows="2" placeholder="One or two lines about the post…"></textarea>
+            </label>
+
+            <div class="md-toolbar">
+              <button type="button" data-md="**" data-md-close="**" title="Bold"><b>B</b></button>
+              <button type="button" data-md="*" data-md-close="*" title="Italic"><i>I</i></button>
+              <button type="button" data-md="## " data-md-close="" title="Heading">H2</button>
+              <button type="button" data-md="- " data-md-close="" title="List item">• List</button>
+              <button type="button" data-md="> " data-md-close="" title="Quote">❝</button>
+              <button type="button" data-md="`" data-md-close="`" title="Code">&lt;/&gt;</button>
+              <button type="button" data-md="```js\n" data-md-close="\n```" title="Code block">Block</button>
+              <button type="button" data-md="[link text](" data-md-close=")" title="Link">🔗</button>
+              <button type="button" data-md="![alt text](" data-md-close=")" title="Image">🖼</button>
+            </div>
+            <label>Content <em>(markdown)</em>
+              <textarea id="edContent" rows="18" placeholder="# My heading&#10;&#10;Write the post in markdown…"></textarea>
+            </label>
+          </div>
+
+          <aside class="editor-preview">
+            <p class="preview-label">Live preview</p>
+            <div id="previewPane" class="preview-pane article-body"></div>
+          </aside>
+        </div>
+      </div>
+
+    </section>
+
+    <div id="toast" class="toast" role="status"></div>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

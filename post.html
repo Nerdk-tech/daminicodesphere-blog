@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Daminicodesphere Blog</title>
+  <meta name="theme-color" content="#0C0F15" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C0F15'/%3E%3Ctext x='32' y='42' font-size='30' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%237EE7BB'%3ED%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span>Daminicodesphere<em>blog</em></span>
+      </a>
+      <nav class="head-nav">
+        <a href="./">Blog</a>
+        <a href="https://dani.daminicodesphere.org" target="_blank" rel="noopener">DANI AI</a>
+        <a class="admin-link" href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <a class="back-link" href="./">← All posts</a>
+
+    <article id="article" class="article">
+      <p class="loading-inline">Loading post…</p>
+    </article>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="foot-brand">Daminicodesphere</p>
+      <p class="foot-note">Built and written by Damini · AI Engineer &amp; Full-Stack Developer</p>
+      <p class="foot-copy">© <span id="year">2026</span> Daminicodesphere · <a href="admin.html">Admin</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/blog.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const slug = new URLSearchParams(location.search).get("slug");
+
+    fetch("posts/posts.json", { cache: "no-store" })
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+      .then(async posts => {
+        const post = posts.find(p => p.slug === slug);
+        if (!post) throw new Error("not found");
+
+        const md = await fetch(post.file, { cache: "no-store" })
+          .then(r => { if (!r.ok) throw new Error(); return r.text(); });
+
+        document.title = post.title + " — Daminicodesphere Blog";
+
+        document.getElementById("article").innerHTML =
+          '<p class="post-meta tags-row">' +
+            (post.tags || []).map(t => '<span class="tag">' + esc(t) + "</span>").join(" ") +
+          "</p>" +
+          "<h1 class='article-title'>" + esc(post.title) + "</h1>" +
+          '<p class="post-meta">' + esc(fmtDate(post.date)) +
+            '<span class="dot">·</span> ' + readingTime(md) + " min read</p>" +
+          (post.cover ? '<figure class="article-cover"><img src="' + esc(post.cover) + '" alt="' + esc(post.title) + '"></figure>' : "") +
+          '<div class="article-body">' + renderMarkdown(md) + "</div>" +
+          '<div class="article-cta">' +
+            "<p>Building something with AI? Let's talk.</p>" +
+            '<a class="btn-solid" target="_blank" rel="noopener" href="https://wa.me/' + DCS.contact.whatsapp + '?text=' +
+              encodeURIComponent("Hi Damini! I read your blog post about DANI AI photorealism. Let's talk.") +
+              '">Chat on WhatsApp →</a>' +
+          "</div>";
+      })
+      .catch(() => {
+        document.getElementById("article").innerHTML =
+          '<p class="loading-inline">Post not found. <a href="./">Back to the blog →</a></p>';
+      });
+  </script>
+</body>
+</html>
