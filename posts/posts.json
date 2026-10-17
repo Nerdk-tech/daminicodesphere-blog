@@ -1,5 +1,18 @@
 [
   {
+    "slug": "why-3d-modeling",
+    "title": "Why 3D Modeling Is Great, and How DANI Will Do the Heavy Lifting for Game Devs",
+    "date": "2026-10-17",
+    "excerpt": "3D modeling builds every game world you have ever played, and it is also the slowest link in the asset pipeline. Here is why it matters, and how DANI's realistic generation will carry the load for game developers.",
+    "cover": "assets/covers/why-3d-modeling.jpg",
+    "tags": [
+      "3D Modeling",
+      "Game Dev",
+      "DANI AI"
+    ],
+    "file": "posts/why-3d-modeling.md"
+  },
+  {
     "slug": "dani-waitlist",
     "title": "Why You Should Join the DANI Waitlist",
     "date": "2026-10-14",
