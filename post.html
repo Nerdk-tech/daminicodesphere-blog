@@ -9,18 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
   <header class="site-head">
     <div class="wrap head-inner">
-      <a class="brand" href="./">
+      <a class="brand" href="/">
         <span class="brand-mark">D</span>
         <span>Daminicodesphere<em>blog</em></span>
       </a>
       <nav class="head-nav">
-        <a href="./">Blog</a>
+        <a href="/">Blog</a>
         <a href="https://dani.daminicodesphere.org" target="_blank" rel="noopener">DANI AI</a>
       </nav>
     </div>
@@ -28,7 +28,7 @@
 
   <main class="wrap">
 
-    <a class="back-link" href="./">← All posts</a>
+    <a class="back-link" href="/">← All posts</a>
 
     <article id="article" class="article">
       <p class="loading-inline">Loading post…</p>
@@ -43,21 +43,21 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/blog.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/blog.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const qs = new URLSearchParams(location.search).get("slug");
     const slug = qs || decodeURIComponent((location.pathname.split("/").filter(Boolean)[1] || ""));
 
-    fetch("posts/posts.json", { cache: "no-store" })
+    fetch("/posts/posts.json", { cache: "no-store" })
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
       .then(async posts => {
         const post = posts.find(p => p.slug === slug);
         if (!post) throw new Error("not found");
 
-        const md = await fetch(post.file, { cache: "no-store" })
+        const md = await fetch("/" + post.file, { cache: "no-store" })
           .then(r => { if (!r.ok) throw new Error(); return r.text(); });
 
         document.title = post.title + " · Daminicodesphere Blog";
@@ -69,7 +69,7 @@
           "<h1 class='article-title'>" + esc(post.title) + "</h1>" +
           '<p class="post-meta">' + esc(fmtDate(post.date)) +
             '<span class="dot">·</span> ' + readingTime(md) + " min read</p>" +
-          (post.cover ? '<figure class="article-cover"><img src="' + esc(post.cover) + '" alt="' + esc(post.title) + '"></figure>' : "") +
+          (post.cover ? '<figure class="article-cover"><img src="' + esc((post.cover.startsWith("/") ? post.cover : "/" + post.cover)) + '" alt="' + esc(post.title) + '"></figure>' : "") +
           '<div class="article-body">' + renderMarkdown(md) + "</div>" +
           '<div class="article-cta">' +
             "<p>Questions or feedback? Reach the team.</p>" +
@@ -80,7 +80,7 @@
       })
       .catch(() => {
         document.getElementById("article").innerHTML =
-          '<p class="loading-inline">Post not found. <a href="./">Back to the blog →</a></p>';
+          '<p class="loading-inline">Post not found. <a href="/">Back to the blog →</a></p>';
       });
   </script>
 </body>

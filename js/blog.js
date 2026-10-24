@@ -96,7 +96,7 @@ function renderMarkdown(md) {
     const img = line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
     if (img) {
       closeList();
-      html += `<figure><img src="${esc(img[2])}" alt="${esc(img[1])}" loading="lazy"></figure>`;
+      html += `<figure><img src="${esc(/^https?:|^\//.test(img[2]) ? img[2] : "/" + img[2])}" alt="${esc(img[1])}" loading="lazy"></figure>`;
       i++; continue;
     }
 
