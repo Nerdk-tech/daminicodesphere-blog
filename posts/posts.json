@@ -1,5 +1,19 @@
 [
   {
+    "slug": "php2shell-php-vulnerability",
+    "title": "PHP2Shell: The Core PHP Vulnerability That Just Shook the Web",
+    "date": "2026-10-24",
+    "excerpt": "Two decades-old flaws in the PHP engine, turned into a working exploit by AI, forced emergency releases across the PHP world. Here is what PHP2Shell is, why it matters, and what to do right now.",
+    "cover": "assets/covers/php2shell.jpg",
+    "tags": [
+      "Security",
+      "PHP",
+      "Web Development",
+      "AI"
+    ],
+    "file": "posts/php2shell-php-vulnerability.md"
+  },
+  {
     "slug": "why-3d-modeling",
     "title": "Why 3D Modeling Is Great, and How DANI Will Do the Heavy Lifting for Game Devs",
     "date": "2026-10-17",
