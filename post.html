@@ -48,7 +48,8 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const slug = new URLSearchParams(location.search).get("slug");
+    const qs = new URLSearchParams(location.search).get("slug");
+    const slug = qs || decodeURIComponent((location.pathname.split("/").filter(Boolean)[1] || ""));
 
     fetch("posts/posts.json", { cache: "no-store" })
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })

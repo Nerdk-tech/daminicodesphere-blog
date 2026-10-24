@@ -159,7 +159,7 @@ async function showManager() {
     row.innerHTML =
       "<div><strong></strong><span>" + esc(fmtDate(p.date)) + "</span></div>" +
       '<div class="row-actions">' +
-        '<a class="btn-ghost btn-sm" target="_blank" rel="noopener" href="post.html?slug=' + encodeURIComponent(p.slug) + '">View</a>' +
+        '<a class="btn-ghost btn-sm" target="_blank" rel="noopener" href="post/' + encodeURIComponent(p.slug) + '">View</a>' +
         '<button class="btn-ghost btn-sm act-edit">Edit</button>' +
         '<button class="btn-danger btn-sm act-del">Delete</button>' +
       "</div>";

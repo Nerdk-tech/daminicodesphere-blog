@@ -68,7 +68,7 @@
         posts.forEach(p => {
           const a = document.createElement("a");
           a.className = "post-row";
-          a.href = "post.html?slug=" + encodeURIComponent(p.slug);
+          a.href = "post/" + encodeURIComponent(p.slug);
           a.innerHTML =
             "<time>" + esc(fmtDate(p.date)) + "</time>" +
             "<div class='row-main'>" +
