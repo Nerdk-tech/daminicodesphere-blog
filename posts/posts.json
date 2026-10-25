@@ -1,5 +1,19 @@
 [
   {
+    "slug": "vps-root-access",
+    "title": "How Hackers Take Root on Your VPS Without You Ever Noticing",
+    "date": "2026-10-25",
+    "excerpt": "Your server keeps serving, your uptime stays perfect, and someone else has been root for months. How attackers get in, hide with rootkits, and how to catch them.",
+    "cover": "assets/covers/vps-root.jpg",
+    "tags": [
+      "Security",
+      "Linux",
+      "VPS",
+      "Sysadmin"
+    ],
+    "file": "posts/vps-root-access.md"
+  },
+  {
     "slug": "php2shell-php-vulnerability",
     "title": "PHP2Shell: The Core PHP Vulnerability That Just Shook the Web",
     "date": "2026-10-24",
