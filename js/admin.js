@@ -83,6 +83,52 @@ async function getFile(path) {
   };
 }
 
+
+/* ---- SEO: rebuild sitemap.xml + feed.xml from the posts index ---- */
+function buildSitemap(posts) {
+  const BASE = "https://blog.daminicodesphere.org";
+  const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const last = posts.length ? posts[0].date : new Date().toISOString().slice(0, 10);
+  let x = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  x += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
+  x += '  <url>\n    <loc>' + BASE + '/</loc>\n    <lastmod>' + last + '</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n';
+  x += '    <image:image>\n      <image:loc>' + BASE + '/assets/img/blog-og.png</image:loc>\n      <image:title>Daminicodesphere Blog</image:title>\n    </image:image>\n  </url>\n';
+  posts.forEach(p => {
+    x += '  <url>\n    <loc>' + BASE + '/post/' + p.slug + '</loc>\n    <lastmod>' + p.date + '</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n';
+    if (p.cover) {
+      const img = p.cover.startsWith("http") ? p.cover : BASE + "/" + p.cover.replace(/^\//, "");
+      x += '    <image:image>\n      <image:loc>' + esc(img) + '</image:loc>\n      <image:title>' + esc(p.title) + '</image:title>\n    </image:image>\n';
+    }
+    x += '  </url>\n';
+  });
+  x += '</urlset>\n';
+  return x;
+}
+
+function buildFeed(posts) {
+  const BASE = "https://blog.daminicodesphere.org";
+  const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  let f = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n';
+  f += '<title>Daminicodesphere Blog</title>\n<link>' + BASE + '/</link>\n<description>Notes on AI, code and building in public.</description>\n';
+  posts.forEach(p => {
+    f += '<item><title>' + esc(p.title) + '</title><link>' + BASE + '/post/' + p.slug + '</link><guid>' + BASE + '/post/' + p.slug + '</guid>';
+    f += '<pubDate>' + new Date(p.date + "T09:00:00Z").toUTCString() + '</pubDate><description>' + esc(p.excerpt || "") + '</description></item>\n';
+  });
+  f += '</channel></rss>\n';
+  return f;
+}
+
+async function syncSeoFiles(posts) {
+  try {
+    const sm = await getFile("sitemap.xml").catch(() => null);
+    await putFile("sitemap.xml", buildSitemap(posts), "Update sitemap", sm ? sm.sha : undefined);
+  } catch (e) { /* non-fatal */ }
+  try {
+    const fd = await getFile("feed.xml").catch(() => null);
+    await putFile("feed.xml", buildFeed(posts), "Update feed", fd ? fd.sha : undefined);
+  } catch (e) { /* non-fatal */ }
+}
+
 async function putFile(path, text, message, sha) {
   const { owner, repo, branch } = DCS.github;
   return ghFetch(`/repos/${owner}/${repo}/contents/${path}`, {
@@ -171,6 +217,7 @@ async function showManager() {
         const idx = await loadPostsIndex();
         const next = idx.posts.filter(x => x.slug !== p.slug);
         if (idx.sha) await putFile("posts/posts.json", JSON.stringify(next, null, 2), "Remove post: " + p.title, idx.sha);
+        await syncSeoFiles(next);
         try {
           const f = await getFile("posts/" + p.slug + ".md");
           await deleteFile("posts/" + p.slug + ".md", "Delete file: " + p.slug, f.sha);
@@ -276,6 +323,7 @@ $("publishBtn").addEventListener("click", async () => {
     posts.unshift(post);
     await putFile("posts/posts.json", JSON.stringify(posts, null, 2),
       "Update posts index", idx.sha);
+    await syncSeoFiles(posts);
 
     toast("Published! Site redeploys in ~1 min");
     setTimeout(showManager, 900);

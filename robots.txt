@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /post.html
+
+Sitemap: https://blog.daminicodesphere.org/sitemap.xml

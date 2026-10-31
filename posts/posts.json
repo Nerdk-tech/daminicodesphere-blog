@@ -1,5 +1,19 @@
 [
   {
+    "slug": "dani-human-like-graphics",
+    "title": "When AI Graphics Stop Looking Like AI: Teaching DANI Color, Type and Taste",
+    "date": "2026-10-31",
+    "excerpt": "Most AI graphics scream AI. The next leap is judgement: restrained color, real type hierarchy and composition a designer would sign off on. Here is what we are training DANI to do.",
+    "cover": "assets/img/wpay-promo.jpg",
+    "tags": [
+      "AI",
+      "DANI AI",
+      "Design",
+      "Image Generation"
+    ],
+    "file": "posts/dani-human-like-graphics.md"
+  },
+  {
     "slug": "vps-root-access",
     "title": "How Hackers Take Root on Your VPS Without You Ever Noticing",
     "date": "2026-10-25",

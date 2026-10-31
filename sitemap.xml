@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://blog.daminicodesphere.org/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/img/blog-og.png</image:loc>
+      <image:title>Daminicodesphere Blog</image:title>
+    </image:image>
+
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/dani-human-like-graphics</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/img/wpay-promo.jpg</image:loc>
+      <image:title>When AI Graphics Stop Looking Like AI: Teaching DANI Color, Type and Taste</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/vps-root-access</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/covers/vps-root.jpg</image:loc>
+      <image:title>How Hackers Take Root on Your VPS Without You Ever Noticing</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/php2shell-php-vulnerability</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/covers/php2shell.jpg</image:loc>
+      <image:title>PHP2Shell: The Core PHP Vulnerability That Just Shook the Web</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/why-3d-modeling</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/covers/why-3d-modeling.jpg</image:loc>
+      <image:title>Why 3D Modeling Is Great, and How DANI Will Do the Heavy Lifting for Game Devs</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/dani-waitlist</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/covers/dani-waitlist.jpg</image:loc>
+      <image:title>Why You Should Join the DANI Waitlist</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.daminicodesphere.org/post/dani-ai-photorealism</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://blog.daminicodesphere.org/assets/covers/dani-photorealism.jpg</image:loc>
+      <image:title>DANI AI and the Photorealism Leap: Why Realistic Image Generation Changes Everything</image:title>
+    </image:image>
+  </url>
+</urlset>

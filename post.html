@@ -4,7 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Post · Daminicodesphere Blog</title>
+  <meta name="description" content="Notes on AI, code and building in public from Daminicodesphere." />
   <meta name="theme-color" content="#0C0F15" />
+  <link rel="canonical" href="https://blog.daminicodesphere.org/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://blog.daminicodesphere.org/sitemap.xml" />
+  <meta property="og:site_name" content="Daminicodesphere Blog" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Daminicodesphere Blog" />
+  <meta property="og:description" content="Notes on AI, code and building in public from Daminicodesphere." />
+  <meta property="og:url" content="https://blog.daminicodesphere.org/" />
+  <meta property="og:image" content="https://blog.daminicodesphere.org/assets/img/blog-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Daminicodesphere Blog" />
+  <meta name="twitter:description" content="Notes on AI, code and building in public from Daminicodesphere." />
+  <meta name="twitter:image" content="https://blog.daminicodesphere.org/assets/img/blog-og.png" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C0F15'/%3E%3Ctext x='32' y='42' font-size='30' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%237EE7BB'%3ED%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,6 +76,47 @@
           .then(r => { if (!r.ok) throw new Error(); return r.text(); });
 
         document.title = post.title + " · Daminicodesphere Blog";
+
+        // per-post SEO: canonical, OG, Twitter, JSON-LD
+        const postUrl = "https://blog.daminicodesphere.org/post/" + post.slug;
+        const coverUrl = post.cover ? (post.cover.startsWith("http") ? post.cover : "https://blog.daminicodesphere.org/" + post.cover) : "https://blog.daminicodesphere.org/assets/img/blog-og.png";
+        const setMeta = (selector, attr, value) => {
+          let el = document.head.querySelector(selector);
+          if (!el) {
+            el = document.createElement("meta");
+            const m = selector.match(/\[(name|property)="([^"]+)"\]/);
+            if (m) el.setAttribute(m[1], m[2]);
+            document.head.appendChild(el);
+          }
+          el.setAttribute(attr, value);
+        };
+        setMeta('meta[name="description"]', "content", post.excerpt || "");
+        setMeta('meta[property="og:title"]', "content", post.title);
+        setMeta('meta[property="og:description"]', "content", post.excerpt || "");
+        setMeta('meta[property="og:url"]', "content", postUrl);
+        setMeta('meta[property="og:image"]', "content", coverUrl);
+        setMeta('meta[property="og:type"]', "content", "article");
+        setMeta('meta[property="article:published_time"]', "content", post.date);
+        setMeta('meta[name="twitter:title"]', "content", post.title);
+        setMeta('meta[name="twitter:description"]', "content", post.excerpt || "");
+        setMeta('meta[name="twitter:image"]', "content", coverUrl);
+        let canonical = document.head.querySelector('link[rel="canonical"]');
+        if (canonical) canonical.setAttribute("href", postUrl);
+        const ld = document.createElement("script");
+        ld.type = "application/ld+json";
+        ld.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt || "",
+          image: [coverUrl],
+          datePublished: post.date,
+          dateModified: post.date,
+          author: { "@type": "Organization", name: "Daminicodesphere" },
+          publisher: { "@type": "Organization", name: "Daminicodesphere" },
+          mainEntityOfPage: { "@type": "WebPage", "@id": postUrl }
+        });
+        document.head.appendChild(ld);
 
         document.getElementById("article").innerHTML =
           '<p class="post-meta tags-row">' +
