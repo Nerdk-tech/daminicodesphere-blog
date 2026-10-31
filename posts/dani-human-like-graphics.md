@@ -16,8 +16,6 @@ None of that requires a human hand. It requires a model that understands why a d
 
 ## The example we are studying
 
-![A clean product promo graphic: black leather wallet on an off-white background, restrained two-color palette, icon list on the left and a bold tagline anchored bottom left](assets/img/wpay-promo.jpg)
-
 Look at what makes that graphic work. It is a crypto wallet promo, a category where most designs shout with neon gradients and floating coins. This one does the opposite: an off-white background, one black product render, a single accent of silver, four icons in a tidy column with a hairline rule, and a tagline with one word deliberately dimmed to create rhythm.
 
 Every decision there is a human judgement call. Nothing is random, nothing is extra, and it still looks expensive. That is the standard, and that is exactly what we are teaching DANI to produce.
